@@ -4,25 +4,26 @@ import com.lab1.model.Employees;
 
 public class EmployeeCredentialService {
 
-	String firstName = "Suganya";
-	String lastName = "Vaidyanathan";
 	String companyName = "gl";
-
-	Employees isa = new Employees(firstName, lastName);
+	
+	Employees isa = new Employees();
 	PasswordGenerator pg = new PasswordGenerator();
 
-	public void generateCredentials(String department) {
+	public void generateCredentials(String firstName, String lastName, String department) {
+		
 		String userName = firstName + lastName + "@" + department + "." + companyName + ".com";
-		String passWord = PasswordGenerator.generatePassword(8);
+		String passWord = pg.generatePassword();
 
 		isa.setUserName(userName);
 		isa.setPassWord(passWord);
+		isa.setFirstName(firstName);
+		isa.setLastName(lastName);
 	}
 
 	public void displayCredentials() {
-		System.out.println("Dear" + " " + firstName + " " + "your generated credentials are as follows");
+		System.out.println("Dear" + " " + isa.getFirstName() + " " + "your generated credentials are as follows");
 		System.out.println("Email --->" + " "+ isa.getUserName());
 		System.out.println("Password --->" + " "  + isa.getPassWord());
 	}
-
+	
 }

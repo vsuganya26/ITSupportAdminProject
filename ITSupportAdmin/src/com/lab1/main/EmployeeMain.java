@@ -2,15 +2,27 @@ package com.lab1.main;
 
 import java.util.Scanner;
 
+import com.lab1.model.Employees;
 import com.lab1.service.EmployeeCredentialService;
 
 public class EmployeeMain {
 	
 	public static void main(String[] args) {
 		
+		String firstName;
+		String lastName;
 		
-		EmployeeCredentialService ecs = new EmployeeCredentialService();
 		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the first name");
+		firstName = sc.nextLine();
+		
+		System.out.println("Enter the last name");
+		lastName = sc.nextLine();
+		
+		Employees emp = new Employees(firstName, lastName);		
+		EmployeeCredentialService ecs = new EmployeeCredentialService();
+		
 		
 		System.out.println("Please enter the department from the following");
 		System.out.println("1. Technical");
@@ -24,19 +36,19 @@ public class EmployeeMain {
 		switch(option) {
 		
 		case 1:
-			ecs.generateCredentials("tech");
+			ecs.generateCredentials(emp.getFirstName(), emp.getLastName(),"tech");
 			status = true;
 			break;
 		case 2:
-			ecs.generateCredentials("admin");
+			ecs.generateCredentials(emp.getFirstName(), emp.getLastName(),"admin");
 			status = true;
 			break;
 		case 3:
-			ecs.generateCredentials("hr");
+			ecs.generateCredentials(emp.getFirstName(), emp.getLastName(),"hr");
 			status = true;
 			break;
 		case 4:
-			ecs.generateCredentials("legal");
+			ecs.generateCredentials(emp.getFirstName(), emp.getLastName(),"legal");
 			status = true;
 			break;
 		default:

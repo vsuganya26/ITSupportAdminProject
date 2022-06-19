@@ -7,6 +7,10 @@ public class Employees {
 	private String userName;
 	private String passWord;
 
+	public Employees() {
+		
+	}
+	
 	public Employees(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
